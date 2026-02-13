@@ -1,6 +1,36 @@
 <template>
     <div>
+        <h2>mains</h2>
+        <div class="menu-section">
+            <div v-for="item in mains" :key="item.name">
+                <img :src="item.src" :alt="item.alt">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
 
+        <h2>sides</h2>
+        <div class="menu-section">
+            <div v-for="item in sides" :key="item.name">
+                <img :src="item.src" :alt="item.alt">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+
+        <h2>sauces</h2>
+        <div class="menu-section">
+            <div v-for="item in sauces" :key="item.name">
+                <img :src="item.src" :alt="item.alt">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
+
+        <h2>drinks</h2>
+        <div class="menu-section">
+            <div v-for="item in drinks" :key="item.name">
+                <img :src="item.src" :alt="item.alt">
+                <p>{{ item.name }}</p>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -9,24 +39,24 @@ import { ref } from 'vue'
 
 const mains = ref([
   {
-    name: 'boneinwings',
+    name: 'bone in wings',
     alt: 'boneinwings',
-    image: 'boneinwings.png'
+    src: '/boneinwings.png'
   },
   {
-    name: 'bonelesswings',
+    name: 'boneless wings',
     alt: 'bonelesswings',
-    image: 'bonelesswings.png'
+    src: '/bonelesswings.png'
   },
   {
-    name: 'chicken',
+    name: 'chicken sandwich',
     alt: 'chicken',
-    image: 'chicken.png'
+    src: '/chicken.png'
   },
   {
-    name: 'schicken',
+    name: 'spicy chicken sandwich',
     alt: 'schicken',
-    image: 'schicken.png'
+    src: '/schicken.png'
   }
 ])
 
@@ -34,12 +64,12 @@ const sides = ref([
   {
     name: 'fries',
     alt: 'fries',
-    image: 'fries.png'
+    src: '/fries.png'
   },
   {
-    name: 'mashedpotatoes',
+    name: 'mashed potatoes',
     alt: 'mashedpotatoes',
-    image: 'mashedpotatoes.png'
+    src: '/mashedpotatoes.png'
   }
 ])
 
@@ -47,12 +77,12 @@ const sauces = ref([
   {
     name: 'mustard',
     alt: 'mustard',
-    image: 'mustard.png'
+    src: '/mustard.png'
   },
   {
     name: 'ranch',
     alt: 'ranch',
-    image: 'ranch.png'
+    src: '/ranch.png'
   }
 ])
 
@@ -60,21 +90,31 @@ const drinks = ref([
   {
     name: 'cola',
     alt: 'cola',
-    image: 'cola.png'
+    src: '/cola.png'
   },
   {
     name: 'fanta',
     alt: 'fanta',
-    image: 'fanta.png'
+    src: '/fanta.png'
   },
   {
     name: 'sprite',
     alt: 'sprite',
-    image: 'sprite.png'
+    src: '/sprite.png'
   }
 ])
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.menu-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
 
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
 </style>
