@@ -1,27 +1,47 @@
 <template>
     <div id="container">
-        <div id="imagecontainer"></div>
-        <div id="itemoverlay">
-            <img 
-                v-for="(food, index) in placedfood" 
-                :key="food.name + index"
-                :src="food.src" 
-                :alt="food.name"
-                :style="{ zIndex: index + 1 }"
-                class="itemoverlay"
-            />
-        </div>
-       
+      
         <div id="foodlist">
-            <FoodButton
-                class="foodbutton"
+            <foodbutton
+                class="mainbutton"
                 @click="addfood(food)"
-                v-for="(food, index) in customerfood"
+                v-for="(food, index) in mains"
                 :key="food.name + index"
                 :food="food"
             />
         </div>
-    </div>
+
+          <div id="foodlist">
+            <foodbutton
+                class="sidesbutton"
+                @click="addfood(food)"
+                v-for="(food, index) in sides"
+                :key="food.name + index"
+                :food="food"
+            />
+        </div>
+
+        <div id="foodlist">
+            <foodbutton
+                class="saucesbutton"
+                @click="addfood(food)"
+                v-for="(food, index) in sauces"
+                :key="food.name + index"
+                :food="food"
+            />
+        </div>
+
+        <div id="foodlist">
+            <foodbutton
+                class="drinksbutton"
+                @click="addfood(food)"
+                v-for="(food, index) in drinks"
+                :key="food.name + index"
+                :food="food"
+            />
+        </div>
+
+        </div>
 </template>
 
 <script setup>
@@ -97,15 +117,18 @@ const drinks = [
 </script>
 
 <style scoped>
-.menu-section {
+#foodlist {
     display: flex;
     gap: 20px;
     margin-bottom: 30px;
 }
 
-img {
-    width: 150px;
-    height: 150px;
+.foodbutton {
+    width: 200px;
+    height: 200px;
     object-fit: cover;
 }
+
+
+
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
 <h2>{{ food.name }}</h2>
-
+<img :src="food.src">
     </div>
 </template>
 
@@ -23,5 +23,17 @@ defineProps({
         height: 200px;
         width: 150px;
         border: 3px solid black;
+
     }
+
+img {
+    width: 125px;
+    height: auto;
+}
+
+.drinksbutton {
+    height: 100px;
+    width: auto;
+}
+
 </style>
