@@ -1,7 +1,7 @@
 <template>
     <div>
-<h2>{{ animal.name }}</h2>
-<h2>{{ animal.species }}</h2>
+<h2>{{ food.name }}</h2>
+
     </div>
 </template>
 

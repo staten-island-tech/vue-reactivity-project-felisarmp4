@@ -1,10 +1,32 @@
 <template>
-    <div>
+    <div id="container">
+        <div id="imagecontainer"></div>
+        <div id="itemoverlay">
+            <img 
+                v-for="(food, index) in placedfood" 
+                :key="food.name + index"
+                :src="food.src" 
+                :alt="food.name"
+                :style="{ zIndex: index + 1 }"
+                class="itemoverlay"
+            />
+        </div>
        
+        <div id="foodlist">
+            <FoodButton
+                class="foodbutton"
+                @click="addfood(food)"
+                v-for="(food, index) in customerfood"
+                :key="food.name + index"
+                :food="food"
+            />
+        </div>
     </div>
 </template>
 
 <script setup>
+
+import foodbutton from '@/components/foodbutton.vue'
 
 const mains = [
   {
