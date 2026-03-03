@@ -117,6 +117,7 @@ const drinks = [
 </script>
 
 <style scoped>
+
 #foodlist {
     display: flex;
     gap: 20px;
@@ -128,7 +129,5 @@ const drinks = [
     height: 200px;
     object-fit: cover;
 }
-
-
 
 </style>
