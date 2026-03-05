@@ -48,6 +48,13 @@
 
 import foodbutton from '@/components/foodbutton.vue'
 
+const positions = {
+    mains:  { x: '30%', y: '5%'  },
+    sides:  { x: '52%', y: '38%' },
+    sauces: { x: '22%', y: '60%' },
+    drinks: { x: '0%',  y: '25%' },
+}
+
 const mains = [
   {
     name: 'bone in wings',
@@ -114,6 +121,15 @@ const drinks = [
     src: '/sprite.png'
   }
 ]
+
+const chosenitems = ref([])
+
+function choseitem(food, category) {
+    const pos = positions[category]
+    chosenitems.value = chosenitems.value.filter(i => i.category !== category)
+    chosenitems.value.push({ ...food, ...pos, category })
+}
+
 </script>
 
 <style scoped>

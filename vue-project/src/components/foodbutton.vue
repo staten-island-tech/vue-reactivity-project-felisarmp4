@@ -38,8 +38,7 @@ defineProps({
         cursor: pointer;
         border: 4px solid #b62727;
         border-radius: 5px;
-
-
+        background-color: #ffffff;
     }
 
     div:hover{
