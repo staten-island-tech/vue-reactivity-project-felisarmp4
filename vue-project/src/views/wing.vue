@@ -1,57 +1,70 @@
 <template>
     <div id="container">
-      
-        <div id="foodlist">
-            <foodbutton
-                class="mainbutton"
-                @click="addfood(food)"
-                v-for="(food, index) in mains"
-                :key="food.name + index"
-                :food="food"
+
+        <div id="foodlists">
+            <div id="foodlist">
+                <foodbutton
+                    class="mainbutton"
+                    @click="addfood(food, 'mains')"
+                    v-for="(food, index) in mains"
+                    :key="food.name + index"
+                    :food="food"
+                />
+            </div>
+
+            <div id="foodlist">
+                <foodbutton
+                    class="sidesbutton"
+                    @click="addfood(food, 'sides')"
+                    v-for="(food, index) in sides"
+                    :key="food.name + index"
+                    :food="food"
+                />
+            </div>
+
+            <div id="foodlist">
+                <foodbutton
+                    class="saucesbutton"
+                    @click="addfood(food, 'sauces')"
+                    v-for="(food, index) in sauces"
+                    :key="food.name + index"
+                    :food="food"
+                />
+            </div>
+
+            <div id="foodlist">
+                <foodbutton
+                    class="drinksbutton"
+                    @click="addfood(food, 'drinks')"
+                    v-for="(food, index) in drinks"
+                    :key="food.name + index"
+                    :food="food"
+                />
+            </div>
+        </div>
+
+        <div id="display">
+            <img
+                v-for="(item, index) in chosenitems"
+                :key="item.name + index"
+                :src="item.src"
+                :alt="item.name"
+                :style="{ left: item.x, top: item.y, zIndex: index + 1 }"
+                class="displayimg"
             />
         </div>
 
-          <div id="foodlist">
-            <foodbutton
-                class="sidesbutton"
-                @click="addfood(food)"
-                v-for="(food, index) in sides"
-                :key="food.name + index"
-                :food="food"
-            />
-        </div>
-
-        <div id="foodlist">
-            <foodbutton
-                class="saucesbutton"
-                @click="addfood(food)"
-                v-for="(food, index) in sauces"
-                :key="food.name + index"
-                :food="food"
-            />
-        </div>
-
-        <div id="foodlist">
-            <foodbutton
-                class="drinksbutton"
-                @click="addfood(food)"
-                v-for="(food, index) in drinks"
-                :key="food.name + index"
-                :food="food"
-            />
-        </div>
-
-        </div>
+    </div>
 </template>
 
 <script setup>
-
+import { ref } from 'vue'
 import foodbutton from '@/components/foodbutton.vue'
 
 const positions = {
-    mains:  { x: '30%', y: '5%'  },
+    mains:  { x: '25%', y: '25%' },
     sides:  { x: '52%', y: '38%' },
-    sauces: { x: '22%', y: '60%' },
+    sauces: { x: '10%', y: '60%' },
     drinks: { x: '0%',  y: '25%' },
 }
 
@@ -121,18 +134,43 @@ const drinks = [
     src: '/sprite.png'
   }
 ]
-
 const chosenitems = ref([])
 
-function choseitem(food, category) {
+function addfood(food, category) {
     const pos = positions[category]
     chosenitems.value = chosenitems.value.filter(i => i.category !== category)
     chosenitems.value.push({ ...food, ...pos, category })
 }
-
 </script>
 
 <style scoped>
+#container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+#display {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+.displayimg {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+#foodlists {
+    display: flex;
+    flex-direction: column;
+}
 
 #foodlist {
     display: flex;
