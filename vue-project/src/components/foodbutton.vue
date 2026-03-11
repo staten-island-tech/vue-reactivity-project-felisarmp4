@@ -9,7 +9,6 @@
       href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
       rel="stylesheet"
     />
-
     </div>
 </template>
 

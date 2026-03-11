@@ -1,6 +1,7 @@
 <template>
+  <div>
+    <h1 id="header">make a wing order!</h1>
     <div id="container">
-
         <div id="foodlists">
             <div id="foodlist">
                 <foodbutton
@@ -49,10 +50,18 @@
                 :key="item.name + index"
                 :src="item.src"
                 :alt="item.name"
-                :style="{ left: item.x, top: item.y, zIndex: index + 1 }"
+                :style="{ left: item.x, top: item.y, zIndex: item.z, width: item.w, height: item.h }"
                 class="displayimg"
             />
         </div>
+    </div>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
+      rel="stylesheet"
+    />
 
     </div>
 </template>
@@ -62,10 +71,10 @@ import { ref } from 'vue'
 import foodbutton from '@/components/foodbutton.vue'
 
 const positions = {
-    mains:  { x: '25%', y: '25%' },
-    sides:  { x: '52%', y: '38%' },
-    sauces: { x: '10%', y: '60%' },
-    drinks: { x: '0%',  y: '25%' },
+    mains:  { x: '25%', y: '25%' , z:'2', w:'500px', h:'auto'},
+    sides:  { x: '90%', y: '60%', z:'5', w:'250px', h:'auto'},
+    sauces: { x: '30%', y: '60%', z:'4', w:'150px', h:'auto'},
+    drinks: { x: '20%',  y: '5%', z:'1', w:'auto', h:'300px' },
 }
 
 const mains = [
@@ -150,6 +159,19 @@ function addfood(food, category) {
     padding: 20px;
 }
 
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    height: auto;
+    border: 4px solid #000000;
+    background: #b62727;
+    border-radius: 5px;
+}
+
 #display {
     position: relative;
     width: 420px;
@@ -182,6 +204,12 @@ function addfood(food, category) {
     width: 200px;
     height: 200px;
     object-fit: cover;
+}
+
+div {
+  font-family: "Gamja Flower", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 </style>
